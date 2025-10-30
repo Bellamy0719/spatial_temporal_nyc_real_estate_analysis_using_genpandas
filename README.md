@@ -111,6 +111,14 @@ SalesYear['PriceperSQFT'] = SalesYear['SALE PRICE'] / SalesYear['GROSS SQUARE FE
 
 Average House Size per zipcode for Single family
 
+```
+#compute average size grouped by ZIP
+zip_stats = sales.groupby('ZIP CODE').agg(
+    avg_size = ('GROSS SQUARE FEET', 'mean'),
+    count = ('GROSS SQUARE FEET', 'count')
+).reset_index()
+```
+
 ### Step 10 – Spatial Analysis
 
 Spatial analysis Average price per sq.foot per zipcode
@@ -122,4 +130,11 @@ SalesZipcode['PriceperSQFT'] = SalesZipcode['SALE PRICE'] / SalesZipcode['GROSS 
 
 ### Step 11 – Merge with ZIP Code Shapefile
 
+Single Family Price per SQFT by Code(Top 10 & Bottom) and Visualize by using geopanda
 
+```
+zip_stats = df.groupby('ZIP CODE').agg(
+    avg_price=('PricePerSqft', 'mean'),
+    count=('PricePerSqft', 'count')
+).reset_index()
+```
