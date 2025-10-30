@@ -3,6 +3,8 @@
 ### Exploratory analysis of New York City real-estate transactions combining tabular and geospatial data.
 Focus: data loading, cleaning, spatial mapping, and temporal trend visualization using pandas, geopandas, and matplotlib.
 
+Notebook: [Click here to view](nyc_real_estate.ipynb)
+
 ### Project Workflow
 
 ### Step 1 – Fetch the Data
@@ -89,6 +91,8 @@ Filter out the outliers by using quantile
 SingleSales = SingleSales[(SingleSales['PRICE_SQFT'] >= SingleSales['PRICE_SQFT'].quantile(0.01)) & (SingleSales['PRICE_SQFT'] <= SingleSales['PRICE_SQFT'].quantile(0.99))] #filter out the outliers
 ```
 
+![6](images/6.png)
+
 
 ### Step 7 – Spatial Filtering with GeoPandas
 
@@ -119,6 +123,8 @@ zip_stats = sales.groupby('ZIP CODE').agg(
 ).reset_index()
 ```
 
+![9](images/9.png)
+
 ### Step 10 – Spatial Analysis
 
 Spatial analysis Average price per sq.foot per zipcode
@@ -138,3 +144,5 @@ zip_stats = df.groupby('ZIP CODE').agg(
     count=('PricePerSqft', 'count')
 ).reset_index()
 ```
+
+![11](images/11.png)
